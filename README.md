@@ -15,7 +15,7 @@ The purpose of this library is to offer a "Router" that does not have to update 
 	- [Compatibility](#compatibility)
 	- [Installing](#installing)
 	- [Implementing](#implementing)
-	- [Information, use and showcase](#information-use-and-showcase)
+	- [Information, usage and showcase](#information-usage-and-showcase)
 
 ## Compatibility
 
@@ -41,8 +41,6 @@ imports:[
 ]
 ```
 
-
-
-## Information, use and showcase
+## Information, usage and showcase
 
 [Interactive demo](https://aramirezj.github.io/ngx-silent-router/)
