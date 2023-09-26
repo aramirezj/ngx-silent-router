@@ -28,8 +28,6 @@ export class HomeComponent {
   }
 
   handleEvents(event: SilentCustomEvent): void {
-    console.log('voy??')
-    this.silentRouter.navigateByUrl('xdxd');
     switch (event.eventName) {
       case 'myCustomEvent':
         console.log('I have received myCustomEvent with value: ' + event.eventValue);
@@ -41,8 +39,6 @@ export class HomeComponent {
   }
 
   handleMyCustomEvent(event: Event): void {
-    console.log('voy??')
-    this.silentRouter.navigateByUrl('xdxd');
     const { detail } = event as CustomEvent;
     console.log(detail);
   }

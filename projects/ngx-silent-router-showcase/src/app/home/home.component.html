@@ -27,6 +27,12 @@ export class HomeComponent &#123;
 		&#123; path: 'screenC', component: ScreenCComponent, title: 'Screen C' }
 	];
 	activeRoute = '';
+	/** There is also a router for performing the navigations. Note that it shouldnt be used at the same time of navigation with the input `activeRoute` **/
+	private silentRouter: SilentRouter = inject(SilentRouter);
+
+	navigateToC()&#123;
+		this.silentRouter.navigateByUrl('screenC');
+	}
 }
 			</code>
 	</pre>
@@ -35,13 +41,14 @@ export class HomeComponent &#123;
 &#60;ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" />
 &#60;button (click)="activeRoute = 'screenA' ">Go to Component A&#60;/button>
 &#60;button (click)="activeRoute = 'screenB' ">Go to Component B&#60;/button>
-&#60;button (click)="activeRoute = 'screenC' ">Go to Component C&#60;/button>	
+&#60;button (click)="navigateToC() ">Go to Component C&#60;/button>	
 		</code>
 		</pre>
 <h4>Result</h4>
 <div class="container">
 	<div style="display: block;margin-bottom: 2.5vh; border:3px solid firebrick;width: fit-content;">
-		<ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" (events)="handleEvents($event)" (myCustomEvent)="handleMyCustomEvent($event)" />
+		<ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" (events)="handleEvents($event)"
+			(myCustomEvent)="handleMyCustomEvent($event)" />
 	</div>
 
 	<button (click)="activeRoute = 'screenA' ">Go to Component A</button>
@@ -61,7 +68,8 @@ export class HomeComponent &#123;
 &#60;button (click)="activeRoute = 'screenC' ">Go to Component C&#60;/button>	
 	</code>
 	</pre>
-<p>Now that the events are being listened, in the typescript component we can handle them with the following approach:</p>
+<p>Now that the events are being listened, in the typescript component we can handle them with the following approach:
+</p>
 <pre>
 		<code class="language-js">
 	import &#123; SilentCustomEvent } from 'ngx-silent-router';

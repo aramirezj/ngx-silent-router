@@ -6,10 +6,10 @@ import { SilentRouter } from './silent-router.service';
 
 @NgModule({
   declarations: [
-    
+    NgxSilentRouterComponent
   ],
   providers: [SilentRouter],
-  exports: []
+  exports: [NgxSilentRouterComponent]
 
 })
 export class NgxSilentRouterModule { }

@@ -11,7 +11,6 @@ export class SilentRouter {
    * @param url 
    */
   public navigateByUrl(url: string): void {
-    console.log(url);
     this._navigateTo.next(url);
   }
 }

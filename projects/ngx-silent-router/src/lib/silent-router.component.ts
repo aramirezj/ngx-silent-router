@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @angular-eslint/use-lifecycle-interface */
-import { Component, ComponentRef, ElementRef, EventEmitter, Input, Output, SimpleChange, Type, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EventEmitter, Input, Output, SimpleChange, Type, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { SilentCustomEvent } from './SilentCustomEvent';
@@ -18,7 +18,14 @@ export class NgxSilentRouterComponent {
   /** Configured routes */
   @Input({ required: true }) public routes!: Routes;
   /** Active route */
-  @Input() public activeRoute: string | undefined;
+  private _activeRoute: string | undefined;
+  /** Active route setter */
+  @Input()
+  set activeRoute(value: string | undefined) {
+    ;
+    this._activeRoute = value;
+    this._invokeComponent();
+  }
   /** Emits a custom event */
   @Output() public events: EventEmitter<SilentCustomEvent> = new EventEmitter();
   /** Servicio titulo */
@@ -29,25 +36,20 @@ export class NgxSilentRouterComponent {
   private _elementRef: ElementRef = inject(ElementRef);
   /** SuscriptionList */
   private _subscriptions: Subscription[] = [];
+  /** Subscription of the router */
+  private _subRouter: Subscription | undefined;
 
+  /** Silent Router */
   private _silentRouter: SilentRouter = inject(SilentRouter);
-
   /** Summons the component when the view is initiated */
   private ngAfterViewInit(): void {
     this._invokeComponent();
-    this._silentRouter._navigateTo.subscribe(url => console.log(url));
-    console.log(this._silentRouter._navigateTo);
+    this._silentRouter._navigateTo.subscribe(url => this.activeRoute = url);
   }
 
-  /**
-   * Anytime the activeRoute changes, we resummon the the component
-   * @param changes  Changes of the component
-   * @param changes.activeRoute Active route
-   */
-  private ngOnChanges(changes: { activeRoute: SimpleChange; }): void {
-    if (!changes.activeRoute.firstChange) {
-      this._invokeComponent();
-    }
+  /** Unsubscribe from the router */
+  private ngOnDestroy(): void {
+    if(this._subRouter) {this._subRouter.unsubscribe();}
   }
 
   /** Invokes the component */
@@ -59,7 +61,7 @@ export class NgxSilentRouterComponent {
       this.variantInstance = undefined;
     }
 
-    if (this.activeRoute) {
+    if (this._activeRoute) {
       const activeRoute = this._getActiveRoute();
       if (activeRoute) {
         this.variantInstance = this._varianteContainer.createComponent(activeRoute.component as Type<any>);
@@ -107,6 +109,6 @@ export class NgxSilentRouterComponent {
    * @returns The route active
    */
   private _getActiveRoute(): Route | undefined {
-    return this.routes.find(route => this.activeRoute === route.path);
+    return this.routes.find(route => this._activeRoute === route.path);
   }
 }

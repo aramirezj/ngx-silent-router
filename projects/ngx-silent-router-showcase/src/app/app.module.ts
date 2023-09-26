@@ -43,8 +43,7 @@ import { NgxSilentRouterModule, SilentRouter } from 'ngxSilentRouter';
       useValue: {
         fullLibraryLoader: async () => await import('highlight.js'),
       },
-    },
-    // {provide: LOCALE_ID, useValue: 'es-ES' }
+    }
   ],
   bootstrap: [AppComponent]
 })
