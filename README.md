@@ -1,10 +1,6 @@
 # NgxGenericTables
 
-The purpose of this library is to offer a wide selection of generic tools for displaying and handling data through tables powered by material with standalone components and directives
-
-## Note
-
-Note: Big part of the bundle size of the library is from material, if you are using it already, you are not going to feel the increase
+The purpose of this library is to offer a "Router" that does not have to update the urls. A simple component to use as a `router-outlet` , allowing you to define the routes, data that will be received, a variable and a service to handle the route and a way to listen every event of the components
 
 ## Installing
 
@@ -20,4 +16,4 @@ Currently English and Spanish is supported, the library will detect it throught 
 
 ## Similar library
 
-[ngx-generic-form](https://www.npmjs.com/package/@aramirezj/ngx-generic-form/) Library of utilities for forms powered by Angular material
+[ngx-generic-form](https://www.npmjs.com/package/@aramirezj/ngx-silent-router/) Library of utilities for forms powered by Angular material
