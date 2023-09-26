@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { ScreenAComponent } from '../screen-a/screen-a.component';
 import { ScreenBComponent } from '../screen-b/screen-b.component';
 import { ScreenCComponent } from '../screen-c/screen-c.component';
-import { SilentCustomEvent, SilentRouter } from 'ngxSilentRouter';
+import { SilentCustomEvent, SilentRouter, SilentRoutes } from 'ngxSilentRouter';
 
 @Component({
   templateUrl: './home.component.html',
@@ -12,7 +12,7 @@ import { SilentCustomEvent, SilentRouter } from 'ngxSilentRouter';
 export class HomeComponent {
   elementRef: ElementRef = inject(ElementRef);
 
-  routes: Routes = [
+  routes: SilentRoutes = [
     { path: 'screenA', component: ScreenAComponent, title: 'Screen A', data: { input1: 'alejandro' } },
     { path: 'screenB', component: ScreenBComponent, title: 'Screen B' },
     { path: 'screenC', component: ScreenCComponent, title: 'Screen C' }

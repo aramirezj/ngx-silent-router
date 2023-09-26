@@ -2,18 +2,21 @@
   "name": "@aramirezj/ngx-silent-router",
   "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^16.2.0",
-    "@angular/core": "^16.2.0",
-    "@angular/router": "^16.2.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/compiler": "^15.0.0",
+    "@angular/router": "^15.0.0",
+    "@angular/platform-browser": "^15.0.0",
+    "@angular/platform-browser-dynamic": "^15.0.0"
   },
   "dependencies": {
-    "@angular/common": "^16.2.0",
-    "@angular/compiler": "^16.2.0",
-    "@angular/core": "^16.2.0",
-    "@angular/platform-browser": "^16.2.0",
-    "@angular/platform-browser-dynamic": "^16.2.0",
-    "@angular/router": "^16.2.0",
-    "rxjs": "~7.8.0",
+    "@angular/common": "^15.0.0",
+    "@angular/compiler": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/platform-browser": "^15.0.0",
+    "@angular/platform-browser-dynamic": "^15.0.0",
+    "@angular/router": "^15.0.0",
+    "rxjs": "^6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -22,11 +25,14 @@
     "javascript",
     "typescript",
     "angular",
-    "angular-material",
+    "angular14",
     "angular15",
-    "generic",
-    "table",
-    "forms"
+    "angular16",
+    "router",
+    "silent",
+    "silent router",
+    "ngx-silent-router",
+    "router-url"
   ],
   "license": "MIT"
 }

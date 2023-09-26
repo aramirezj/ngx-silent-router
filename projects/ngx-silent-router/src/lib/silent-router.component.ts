@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @angular-eslint/use-lifecycle-interface */
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EventEmitter, Input, Output, SimpleChange, Type, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ComponentRef, ElementRef, EventEmitter, Input, Output, Type, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { SilentCustomEvent } from './SilentCustomEvent';
-import { Routes, Data, Route } from '@angular/router';
+import { Data, Route } from '@angular/router';
 import { SilentRouter } from './silent-router.service';
+import { SilentRoutes } from './SilentRoute';
 
 /** Silent Router component */
 @Component({
@@ -16,7 +17,7 @@ export class NgxSilentRouterComponent {
   /** Visibilidad del futuro contenedor del componente */
   @ViewChild('varianteContainer', { read: ViewContainerRef }) private _varianteContainer!: ViewContainerRef;
   /** Configured routes */
-  @Input({ required: true }) public routes!: Routes;
+  @Input() public routes!: SilentRoutes;
   /** Active route */
   private _activeRoute: string | undefined;
   /** Active route setter */
@@ -109,6 +110,6 @@ export class NgxSilentRouterComponent {
    * @returns The route active
    */
   private _getActiveRoute(): Route | undefined {
-    return this.routes.find(route => this._activeRoute === route.path);
+    return this.routes?.find(route => this._activeRoute === route.path);
   }
 }

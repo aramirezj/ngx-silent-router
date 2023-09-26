@@ -4,7 +4,6 @@
   <h1 align="center">NgxSpinner</h1>
 </p>
 
-[![Support](https://img.shields.io/badge/Support-Angular%2014%2B-blue.svg?style=flat-square)]()
 [![Support](https://img.shields.io/badge/Support-Angular%2015%2B-blue.svg?style=flat-square)]()
 [![Support](https://img.shields.io/badge/Support-Angular%2016%2B-blue.svg?style=flat-square)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)]()
@@ -21,9 +20,8 @@ The purpose of this library is to offer a "Router" that does not have to update 
 
 | Angular Version | ngx-silent-router version                |
 | --------------- | ----------------------------------- |
-| Angular >= 16   | `npm i --save ngx-silent-router@1.0.0` |
+| Angular >= 16   | `npm i --save ngx-silent-router@2.0.0` |
 | Angular >= 15   | `npm i --save ngx-silent-router@1.0.0` |
-| Angular >= 14   | `npm i --save ngx-silent-router@1.0.0`  |
 
 ## Installing
 
