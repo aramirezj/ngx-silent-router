@@ -1,0 +1,96 @@
+<h1>ngx-silent-router</h1>
+<h1>What is:</h1>
+<p>The purpose of this library is to offer a "Router" that does not have to update the urls. A simple component to use
+	as a <span class="comando">router-outlet</span>, allowing you to
+	define the routes, data that will be received, a variable to handle the route</p>
+<h2 id="ngxworkspace">Requirements:</h2>
+<p><a href="https://www.npmjs.com/package/rxjs">Rxjs</a> installed in your project</p>
+<h2 id="ngxworkspace">Installation:</h2>
+
+<p>The recomended version is Angular 16</p>
+<p>To install it, you have to execute the command <span class="comando">npm install ngx-silent-router</span></p>
+<p>To start using it, depends of the module you want to use, you have to import the module</p>
+
+<h2 id="development-server">Usage:</h2>
+<p>Depends of which utility are you are using, visit the sections using the side menu</p>
+
+
+<h2 id="development-server">Demo of simple invoking: </h2>
+<h3>This demo invokes the ngx-silent-router with 3 components as routes</h3>
+<h4>Code:</h4>
+<pre>
+	<code class="language-js">
+export class HomeComponent &#123;
+	routes: Routes = [
+		&#123; path: 'screenA', component: ScreenAComponent, title: 'Screen A', data:  &#123; input1: 'alejandro' } },
+		&#123; path: 'screenB', component: ScreenBComponent, title: 'Screen B' },
+		&#123; path: 'screenC', component: ScreenCComponent, title: 'Screen C' }
+	];
+	activeRoute = '';
+}
+			</code>
+	</pre>
+<pre>
+		<code class="language-html">
+&#60;ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" />
+&#60;button (click)="activeRoute = 'screenA' ">Go to Component A&#60;/button>
+&#60;button (click)="activeRoute = 'screenB' ">Go to Component B&#60;/button>
+&#60;button (click)="activeRoute = 'screenC' ">Go to Component C&#60;/button>	
+		</code>
+		</pre>
+<h4>Result</h4>
+<div class="container">
+	<div style="display: block;margin-bottom: 2.5vh; border:3px solid firebrick;width: fit-content;">
+		<ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" (events)="handleEvents($event)" (myCustomEvent)="handleMyCustomEvent($event)" />
+	</div>
+
+	<button (click)="activeRoute = 'screenA' ">Go to Component A</button>
+	<button (click)="activeRoute = 'screenB' ">Go to Component B</button>
+	<button (click)="activeRoute = 'screenC' ">Go to Component C</button>
+</div>
+
+<h2 id="development-server">Demo of event listening: </h2>
+<h3>You can also listen the events emitted by the EventEmitter of the components. There is two ways for that: Listening
+	the event itself, or listening the global event</h3>
+<h4>Code:</h4>
+<pre>
+	<code class="language-html">
+&#60;ngx-silent-router [routes]="routes" [activeRoute]="activeRoute" (events)="handleEvents($event)" (myCustomEvent)="handleMyCustomEvent($event)" />
+&#60;button (click)="activeRoute = 'screenA' ">Go to Component A&#60;/button>
+&#60;button (click)="activeRoute = 'screenB' ">Go to Component B&#60;/button>
+&#60;button (click)="activeRoute = 'screenC' ">Go to Component C&#60;/button>	
+	</code>
+	</pre>
+<p>Now that the events are being listened, in the typescript component we can handle them with the following approach:</p>
+<pre>
+		<code class="language-js">
+	import &#123; SilentCustomEvent } from 'ngx-silent-router';
+
+	export class HomeComponent &#123;
+		routes: Routes = [
+			&#123; path: 'screenA', component: ScreenAComponent, title: 'Screen A', data:  &#123; input1: 'alejandro' } },
+			&#123; path: 'screenB', component: ScreenBComponent, title: 'Screen B' },
+			&#123; path: 'screenC', component: ScreenCComponent, title: 'Screen C' }
+		];
+		activeRoute = '';
+
+		/** Handle events will always listen every EventEmitter no matter what name, so every event is listened here and can be dispached through the event.eventName **/
+		handleEvents(event: SilentCustomEvent): void &#123;
+			switch (event.eventName) &#123;
+				case 'myCustomEvent':
+					console.log('I have received myCustomEvent with value: ' + event.eventValue);
+					break;
+				case 'myCustomEvent2':
+					console.log('I have received myCustomEvent2 with value: ' + event.eventValue);
+					break;
+			}
+		}
+	
+		/** Handling the specific event directly has to go through some small casting, the event.detail will have the value of the event **/
+		handleMyCustomEvent(event: Event): void &#123;
+			const &#123; detail } = event as CustomEvent;
+			console.log(detail);
+		}
+	}
+				</code>
+		</pre>

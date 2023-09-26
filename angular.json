@@ -1,0 +1,159 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-silent-router": {
+      "projectType": "library",
+      "root": "projects/ngx-silent-router",
+      "sourceRoot": "projects/ngx-silent-router/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-silent-router/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-silent-router/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-silent-router/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "projects/ngx-silent-router/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public",
+            "buildTarget": "production"
+          }
+        },
+				"lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-silent-router/**/*.ts",
+              "projects/ngx-silent-router/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-silent-router-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngx-silent-router-showcase",
+      "sourceRoot": "projects/ngx-silent-router-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-silent-router-showcase",
+            "index": "projects/ngx-silent-router-showcase/src/index.html",
+            "main": "projects/ngx-silent-router-showcase/src/main.ts",
+            "polyfills": "projects/ngx-silent-router-showcase/src/polyfills.ts",
+            "tsConfig": "projects/ngx-silent-router-showcase/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-silent-router-showcase/src/favicon.ico",
+              "projects/ngx-silent-router-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-silent-router-showcase/src/styles.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1.5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-silent-router-showcase/src/environments/environment.ts",
+                  "with": "projects/ngx-silent-router-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-silent-router-showcase:build:production"
+            },
+            "development": {
+              "browserTarget": "ngx-silent-router-showcase:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-silent-router-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "tsConfig": "projects/ngx-silent-router-showcase/tsconfig.spec.json",
+            "assets": [
+              "projects/ngx-silent-router-showcase/src/favicon.ico",
+              "projects/ngx-silent-router-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-silent-router-showcase/src/styles.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
+            "scripts": []
+          }
+        },
+				"lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-silent-router-showcase/**/*.ts",
+              "projects/ngx-silent-router-showcase/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

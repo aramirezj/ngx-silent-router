@@ -1,0 +1,305 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "deprecation",
+    "import",
+    "@typescript-eslint"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module",
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:jsdoc/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/no-empty-lifecycle-method": [
+          "off"
+        ],
+        "no-empty-function": [
+          "error",
+          {
+            "allow": [
+              "constructors"
+            ]
+          }
+        ],
+        "arrow-body-style": [
+          "error",
+          "as-needed"
+        ],
+        "curly": [
+          "error"
+        ],
+        "deprecation/deprecation": [
+          "warn"
+        ],
+        "eol-last": [
+          "error",
+          "always"
+        ],
+        "no-restricted-imports": [
+          "error",
+          "rxjs/Rx"
+        ],
+        "import/no-extraneous-dependencies": [
+          "error"
+        ],
+        "indent": [
+          "error",
+          2,
+          {
+            "SwitchCase": 1
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 160,
+            "ignoreStrings": true,
+            "ignoreUrls": true,
+            "ignoreRegExpLiterals": true,
+            "ignoreTemplateLiterals": true
+          }
+        ],
+        "no-console": [
+          "off",
+          {
+            "allow": [
+              "error"
+            ]
+          }
+        ],
+        "no-fallthrough": [
+          "error"
+        ],
+        "quote-props": [
+          "error",
+          "as-needed"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "semi": [
+          "off"
+        ],
+        "@typescript-eslint/semi": [
+          "error"
+        ],
+        "space-before-function-paren": [
+          "error",
+          {
+            "anonymous": "never",
+            "asyncArrow": "always",
+            "named": "never"
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "static-field",
+              "instance-field",
+              "static-method",
+              "instance-method"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+          "error"
+        ],
+        "@typescript-eslint/no-var-requires": [
+          "error"
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+          "error",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "multilineDetection": "brackets"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error"
+        ],
+        "@typescript-eslint/naming-convention": [
+          "off",
+          {
+            "selector": "default",
+            "format": [
+              "camelCase"
+            ]
+          },
+          {
+            "selector": "variable",
+            "modifiers": [
+              "const"
+            ],
+            "format": [
+              "camelCase",
+              "UPPER_CASE"
+            ]
+          },
+          {
+            "selector": "parameter",
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": [
+              "private"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "typeLike",
+            "format": [
+              "PascalCase"
+            ]
+          },
+          {
+            "selector": "variable",
+            "types": [
+              "boolean"
+            ],
+            "format": [
+              "PascalCase"
+            ],
+            "prefix": [
+              "is",
+              "should",
+              "has",
+              "can",
+              "did",
+              "will"
+            ]
+          },
+          {
+            "selector": "property",
+            "modifiers": [
+              "private"
+            ],
+            "types": [
+              "boolean"
+            ],
+            "format": [
+              "PascalCase"
+            ],
+            "leadingUnderscore": "require",
+            "prefix": [
+              "is",
+              "should",
+              "has",
+              "can",
+              "did",
+              "will"
+            ]
+          }
+        ],
+        "jsdoc/no-bad-blocks": [
+          "warn"
+        ],
+        "jsdoc/no-types": [
+          "warn"
+        ],
+        "jsdoc/require-param-type": [
+          "off"
+        ],
+        "jsdoc/require-returns-type": [
+          "off"
+        ],
+        "jsdoc/require-returns": [
+          "warn",
+          {
+            "checkGetters": false
+          }
+        ],
+        "jsdoc/require-property-type": [
+          "off"
+        ],
+        "jsdoc/require-asterisk-prefix": [
+          "warn"
+        ],
+        "jsdoc/require-description": [
+          "warn",
+          {
+            "contexts": [
+              "ClassDeclaration",
+              "ClassExpression",
+              "FunctionDeclaration",
+              "FunctionExpression",
+              "MethodDefinition"
+            ],
+            "descriptionStyle": "any",
+            "checkConstructors": false
+          }
+        ],
+        "jsdoc/require-jsdoc": [
+          "warn",
+          {
+            "require": {
+              "ClassDeclaration": true,
+              "ClassExpression": true,
+              "FunctionDeclaration": true,
+              "FunctionExpression": false,
+              "ArrowFunctionExpression": false,
+              "MethodDefinition": true
+            },
+            "contexts": [
+              "TSInterfaceDeclaration",
+              "TSMethodSignature"
+            ]
+          }
+        ]
+      },
+      "settings": {
+        "jsdoc": {
+          "ignorePrivate": true
+        }
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}

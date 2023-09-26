@@ -1,0 +1,16 @@
+<!-- Barra de navegación -->
+<mat-toolbar color="primary">
+  <span [routerLink]="['home']" style="cursor: pointer;">ngx-silent-router Showcase</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+
+<!-- Contenido de la web -->
+<mat-drawer-container class="example-container" autosize>
+
+  <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+
