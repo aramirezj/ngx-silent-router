@@ -1,7 +1,7 @@
 # ngx-silent-router
 <p align="center">
   <img height="200px" width="200px" style="text-align: center;" src="https://github.com/aramirezj/ngx-silent-router/blob/main/shield.svg?raw=true">
-  <h1 align="center">NgxSpinner</h1>
+  <h1 align="center">NgxSilentRouter</h1>
 </p>
 
 [![Support](https://img.shields.io/badge/Support-Angular%2015%2B-blue.svg?style=flat-square)]()
